@@ -22,12 +22,12 @@ Let you know that how to use this project via some of bash scripts.
 
 #### docker launchers ####
 
-* startup-container.sh
+1. startup-container.sh
     * Start docker container without come into itself.
     * Also you can take a token to use in jupyter.
     * ! Don't forget it typing 'mkdir ~/data' on your pc for VOLUME_HOST environment value.
 
-* tensorflow.sh 
+2. tensorflow.sh 
     * Start docker container and attach your terminal to it.
     * ! Don't forget it the token that printed on below.
     * example
@@ -41,7 +41,7 @@ Let you know that how to use this project via some of bash scripts.
         Currently running servers:
         http://localhost:8888/?token=bef7a44e2d4df89c662a1d4573cf191bd2e86b9d24119b06 :: /data/notebooks
         ```
-* shutdown-container.sh
+3. shutdown-container.sh
     * Halt docker container
 
 ## http pages ##
