@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+nohup /tensorflow/bin/tensorboard --logdir /data/tensorboard &
