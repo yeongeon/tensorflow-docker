@@ -1,3 +1,6 @@
+import os
+from notebook.auth import passwd
+
 # Configuration file for jupyter-notebook.
 
 #------------------------------------------------------------------------------
@@ -205,7 +208,7 @@ c.NotebookApp.notebook_dir = '/data/notebooks'
 #  platform dependent and determined by the python standard library `webbrowser`
 #  module, unless it is overridden using the --browser (NotebookApp.browser)
 #  configuration option.
-c.NotebookApp.open_browser = True
+c.NotebookApp.open_browser = False
 
 ## Hashed password to use for web authentication.
 #  
@@ -215,6 +218,14 @@ c.NotebookApp.open_browser = True
 #  
 #  The string should be of the form type:salt:hashed-password.
 #c.NotebookApp.password = ''
+if 'JPT_PASSWORD' in os.environ:
+    password = os.environ['JPT_PASSWORD']
+    if password:
+        c.NotebookApp.password = passwd(password)
+    else:
+        c.NotebookApp.password = ''
+        c.NotebookApp.token = ''
+del os.environ['JPT_PASSWORD']
 
 ## Forces users to use a password for the Notebook server. This is useful in a
 #  multi user environment, for instance when everybody in the LAN can access each

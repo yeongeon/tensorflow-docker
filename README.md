@@ -8,6 +8,7 @@ Let you know that how to use this project via some of bash scripts.
 * tensorflow
 * tensorboard
 * jupyter
+* python3
 
 ## runnable scripts ##
 
@@ -20,27 +21,19 @@ Let you know that how to use this project via some of bash scripts.
 * build-dockerfile.sh 
     * To make docker image on your own pc.
 
+* tensorflow.sh 
+    * You can attach your terminal to the container.
+
 #### docker launchers ####
 
 1. startup-container.sh
     * Start docker container without come into itself.
     * Also you can take a token to use in jupyter.
     * ! Don't forget it typing 'mkdir ~/data' on your pc for VOLUME_HOST environment value.
+    * After that let's move to http://localhost:8888 on your browser.
+    * Input the password for jupyter that set in [env-dockerfile.sh](https://github.com/yeongeon/tensorflow-docker/blob/master/sbin/env-dockerfile.sh).
+        * (DEFAULT: jupyter)
 
-2. tensorflow.sh 
-    * Start docker container and attach your terminal to it.
-    * ! Don't forget it the token that printed on below.
-    * example
-        ```
-        $ ./tensorflow.sh
-        >> Begin --------------------------------
-
-        CONTAINER_NAME: tensorflow-playground
-
-        docker exec -it tensorflow-playground /bin/bash -l
-        Currently running servers:
-        http://localhost:8888/?token=bef7a44e2d4df89c662a1d4573cf191bd2e86b9d24119b06 :: /data/notebooks
-        ```
 3. shutdown-container.sh
     * Halt docker container
 
@@ -49,8 +42,18 @@ Let you know that how to use this project via some of bash scripts.
 #### jupyter ####
 
 * http://localhost:8888/
-    * Input the token that was copied when you using script.
+    * Input the password for jupyter that set in [env-dockerfile.sh](https://github.com/yeongeon/tensorflow-docker/blob/master/sbin/env-dockerfile.sh).
+        * (DEFAULT: jupyter)
 
 #### tensorboard ####
 
 * http://localhost:6006/
+* tip
+    * You can see a message as "To store a graph, create a tf.summary.FileWriter" at landing page of the tensorboard, then you can avoid it after to use some of codes on below.
+        * sample
+        ```
+        log_dir = "/data/tensorboard"
+        tw = tf.summary.FileWriter(log_dir, graph=sess.graph)
+        ```
+
+

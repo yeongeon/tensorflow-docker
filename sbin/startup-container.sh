@@ -13,6 +13,9 @@ echo ">> VOLUME MOUNT -------------------------"
 echo "   HOST: ${VOLUME_HOST}"
 echo "   CONTAINER: ${VOLUME_CONTAINER}"
 echo ""
+echo ">> JUPYTER PASSWORD -------------------------"
+echo "   JPT_PASSWORD: ${JPT_PASSWORD}"
+echo ""
 
 if [ ! -d ${VOLUME_HOST} ]; then
   echo "[ERROR] ${VOLUME_HOST} is not exist!";
@@ -29,9 +32,10 @@ fi
 CMD="docker run -d \
 -p 6006:6006 \
 -p 8888:8888 \
+-e JPT_PASSWORD=${JPT_PASSWORD} \
 -v ${VOLUME_HOST}:${VOLUME_CONTAINER} \
 --name "${CONTAINER_NAME}" \
 --rm \
-${NAME_IMAGE}:${NAME_TAG}"
+${NAME_IMAGE}:${NAME_TAG} "
 echo ${CMD}
 exec ${CMD}
