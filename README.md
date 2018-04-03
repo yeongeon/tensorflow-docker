@@ -12,9 +12,9 @@ Let you know that how to use this project via some of bash scripts.
 
 ## hub repository ##
 
-* [yeongeon/docker-playground](https://hub.docker.com/r/yeongeon/tensorflow-playground)
+* [yeongeon/tensorflow-playground](https://hub.docker.com/r/yeongeon/tensorflow-playground)
     ```
-    docker pull yeongeon/tensowflow-playground
+    docker pull yeongeon/tensorflow-playground
     ```
 
 ## runnable scripts ##
