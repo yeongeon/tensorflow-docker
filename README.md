@@ -1,4 +1,4 @@
-# tensorflow-docker #
+# tensorflow-playground #
 
 You can try to deal with tensorflow on docker when you take this branch.
 Let you know that how to use this project via some of bash scripts.
@@ -31,8 +31,18 @@ Let you know that how to use this project via some of bash scripts.
     * Also you can take a token to use in jupyter.
     * ! Don't forget it typing 'mkdir ~/data' on your pc for VOLUME_HOST environment value.
     * After that let's move to http://localhost:8888 on your browser.
-    * Input the password for jupyter that set in [env-dockerfile.sh](https://github.com/yeongeon/tensorflow-docker/blob/master/sbin/env-dockerfile.sh).
-        * (DEFAULT: jupyter)
+    * Input the password for jupyter that set in [env-dockerfile.sh](https://github.com/yeongeon/tensorflow-playground/blob/master/sbin/env-dockerfile.sh).
+        ```
+        DEFAULT: jupyter
+        ```
+    * Also you can use a image in docker hub directly with option value as --hub then without build on your own pc.
+        ```
+        usage : startup-container.sh [--hub] [-h|--help]
+        --hub
+            To use image in the docker hub.
+        -h, --help
+            The help
+        ```
 
 3. shutdown-container.sh
     * Halt docker container
@@ -42,8 +52,10 @@ Let you know that how to use this project via some of bash scripts.
 #### jupyter ####
 
 * http://localhost:8888/
-    * Input the password for jupyter that set in [env-dockerfile.sh](https://github.com/yeongeon/tensorflow-docker/blob/master/sbin/env-dockerfile.sh).
-        * (DEFAULT: jupyter)
+    * Input the password for jupyter that set in [env-dockerfile.sh](https://github.com/yeongeon/tensorflow-playground/blob/master/sbin/env-dockerfile.sh).
+        ```
+        DEFAULT: jupyter
+        ```
 
 #### tensorboard ####
 
