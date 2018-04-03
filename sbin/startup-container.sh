@@ -2,6 +2,33 @@
 
 source ./env-dockerfile.sh
 
+function help() {
+   echo 'usage : startup-container.sh [--hub] [-h|--help]'
+   echo ' --hub'
+   echo '       To use image in the docker hub.'
+   echo ' -h, --help'
+   echo '       The help'
+}
+
+USE_HUB=false
+while [ $# -gt 0 ]
+do
+  case "$1" in
+    --hub)
+      shift; USE_HUB=true;;
+    -h)
+      help; exit 0;;
+    --help)
+      help; exit 0;;
+    -*)
+      echo "unrecognized option: $1"; exit 0;;
+    *)
+      break;
+      ;;
+  esac
+  shift
+done
+
 VOLUME_HOST=~/data
 VOLUME_CONTAINER=/data
 
@@ -27,6 +54,11 @@ else
     mkdir ${VOLUME_HOST}/notebooks
     echo ">> Created new path as on ${VOLUME_HOST}/notebooks"
   fi
+fi
+
+if ($USE_HUB); then
+  NAME_IMAGE="${HUB_ACCOUNT}/${NAME_IMAGE}"	
+  echo ">> Using ${NAME_IMAGE} in docker hub."
 fi
 
 CMD="docker run -d \
