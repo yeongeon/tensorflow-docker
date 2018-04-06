@@ -10,6 +10,13 @@ Let you know that how to use this project via some of bash scripts.
 * jupyter
 * python3
 
+## hub repository ##
+
+* [yeongeon/tensorflow-playground](https://hub.docker.com/r/yeongeon/tensorflow-playground)
+    ```
+    docker pull yeongeon/tensorflow-playground
+    ```
+
 ## runnable scripts ##
 
 #### common things ####
