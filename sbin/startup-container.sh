@@ -64,6 +64,7 @@ fi
 CMD="docker run -d \
 -p 6006:6006 \
 -p 8888:8888 \
+-p 8182:8182 \
 -e JPT_PASSWORD=${JPT_PASSWORD} \
 -v ${VOLUME_HOST}:${VOLUME_CONTAINER} \
 --name "${CONTAINER_NAME}" \
