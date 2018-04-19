@@ -9,6 +9,7 @@ Let you know that how to use this project via some of bash scripts.
 * tensorboard
 * jupyter
 * python3
+* apache tinkerpop (with gremlin-server/ipython)
 
 ## hub repository ##
 
@@ -74,5 +75,23 @@ Let you know that how to use this project via some of bash scripts.
         log_dir = "/data/tensorboard"
         tw = tf.summary.FileWriter(log_dir, graph=sess.graph)
         ```
+
+#### tinkerpop ####
+
+* ws://localhost:8182/gremlin
+* sample code
+    ```
+    from __future__  import print_function  # Python 2/3 compatibility
+
+    from gremlin_python import statics
+    from gremlin_python.structure.graph import Graph
+    from gremlin_python.process.graph_traversal import __
+    from gremlin_python.process.strategies import *
+    from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
+
+    graph = Graph()
+    g = graph.traversal().withRemote(DriverRemoteConnection('ws://localhost:8182/gremlin','g'))
+    print(g.V().limit(2).toList())
+    ```
 
 

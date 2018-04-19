@@ -59,6 +59,7 @@ RUN tensorflow/bin/pip3 install --ignore-installed --upgrade word2vec
 
 RUN tensorflow/bin/pip3 install --upgrade pandas
 RUN tensorflow/bin/pip3 install --upgrade networkx
+RUN tensorflow/bin/pip3 install --upgrade gremlinpython
 RUN tensorflow/bin/pip3 install --upgrade ipython-gremlin
 
 RUN tensorflow/bin/pip3 install --upgrade tensorboard
