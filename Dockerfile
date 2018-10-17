@@ -49,7 +49,7 @@ RUN apt-get update && apt-get --allow-unauthenticated install -y \
 
 RUN python3 -m venv tensorflow
 RUN /bin/bash -c "source tensorflow/bin/activate"
-RUN tensorflow/bin/easy_install -U pip
+#RUN tensorflow/bin/easy_install -U pip
 RUN tensorflow/bin/pip3 install --upgrade tensorflow
 RUN tensorflow/bin/pip3 install --upgrade jupyter
 
@@ -63,6 +63,8 @@ RUN tensorflow/bin/pip3 install --upgrade gremlinpython
 RUN tensorflow/bin/pip3 install --upgrade ipython-gremlin
 
 RUN tensorflow/bin/pip3 install --upgrade tensorboard
+
+RUN tensorflow/bin/pip3 install torch torchvision
 
 ADD template/profile.tmp /root/profile.tmp
 RUN /bin/bash -c "cat /root/profile.tmp >> /root/.profile"
