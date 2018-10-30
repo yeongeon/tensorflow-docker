@@ -1,4 +1,4 @@
-FROM ubuntu:17.10
+FROM ubuntu:18.04
 MAINTAINER yeongeon <yeongeon@gmail.com>
 
 ADD template/sources.list.tmp /etc/apt/sources.list
