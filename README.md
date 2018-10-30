@@ -1,10 +1,11 @@
 # tensorflow-playground #
 
-You can try to deal with tensorflow on docker when you take this branch.
-Let you know that how to use this project via some of bash scripts.
+You can use tensorflow and pytorch on your own docker after to get clone this branch.
+Let's begin to learn a way that how to use this project with some of bash scripts.
 
 ## included things ##
 
+* pytorch
 * tensorflow
 * tensorboard
 * jupyter
