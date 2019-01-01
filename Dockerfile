@@ -1,9 +1,13 @@
-FROM ubuntu:18.04
+FROM ubuntu:18.10
 MAINTAINER yeongeon <yeongeon@gmail.com>
 
 ADD template/sources.list.tmp /etc/apt/sources.list
 
-RUN apt-get update 
+#RUN apt-get update 
+RUN apt update 
+RUN apt upgrade
+RUn apt dist-upgrade
+
 
 # Set the timezone
 RUN echo "Asia/Seoul" | tee /etc/timezone && \
@@ -58,13 +62,14 @@ RUN tensorflow/bin/pip3 install --upgrade matplotlib
 RUN tensorflow/bin/pip3 install --ignore-installed --upgrade word2vec
 
 RUN tensorflow/bin/pip3 install --upgrade pandas
+RUN tensorflow/bin/pip3 install --upgrade konlpy
 RUN tensorflow/bin/pip3 install --upgrade networkx
 RUN tensorflow/bin/pip3 install --upgrade gremlinpython
 RUN tensorflow/bin/pip3 install --upgrade ipython-gremlin
 
 RUN tensorflow/bin/pip3 install --upgrade tensorboard
 
-RUN tensorflow/bin/pip3 install torch torchvision
+RUN tensorflow/bin/pip3 install --upgrade -v --trusted-host files.pythonhosted.org --trusted-host pypi.org  torch torchvision
 
 ADD template/profile.tmp /root/profile.tmp
 RUN /bin/bash -c "cat /root/profile.tmp >> /root/.profile"
