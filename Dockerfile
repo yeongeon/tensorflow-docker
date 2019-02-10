@@ -3,10 +3,9 @@ MAINTAINER yeongeon <yeongeon@gmail.com>
 
 ADD template/sources.list.tmp /etc/apt/sources.list
 
-#RUN apt-get update 
 RUN apt update 
-RUN apt upgrade
-RUn apt dist-upgrade
+#RUN apt upgrade
+#RUn apt dist-upgrade
 
 
 # Set the timezone
@@ -80,17 +79,17 @@ RUN /bin/bash -c "chmod +x /tensorflow/bin/tensorboard.sh"
 RUN /bin/bash -c "mkdir -p /notebooks/conf"
 ADD template/jupyter_notebook_config.py /notebooks/conf/jupyter_notebook_config.py
 
-RUN /bin/bash -c "wget -P /tmp http://mirror.apache-kr.org/tinkerpop/3.3.4/apache-tinkerpop-gremlin-server-3.3.4-bin.zip"
-RUN /bin/bash -c "unzip /tmp/apache-tinkerpop-gremlin-server-3.3.4-bin.zip -d /."
+RUN /bin/bash -c "wget -P /tmp http://mirror.apache-kr.org/tinkerpop/3.4.0/apache-tinkerpop-gremlin-server-3.4.0-bin.zip"
+RUN /bin/bash -c "unzip /tmp/apache-tinkerpop-gremlin-server-3.4.0-bin.zip -d /."
 
 ADD template/gremlin-server.yaml.tmp /tmp/gremlin-server.yaml.tmp
-RUN /bin/bash -c "cat /tmp/gremlin-server.yaml.tmp > /apache-tinkerpop-gremlin-server-3.3.4/conf/gremlin-server.yaml"
+RUN /bin/bash -c "cat /tmp/gremlin-server.yaml.tmp > /apache-tinkerpop-gremlin-server-3.4.0/conf/gremlin-server.yaml"
 
-ADD template/gremlin-server-launcher.tmp /apache-tinkerpop-gremlin-server-3.3.4/bin/gremlin-server-launcher.sh
-RUN /bin/bash -c "chmod +x /apache-tinkerpop-gremlin-server-3.3.4/bin/gremlin-server-launcher.sh"
+ADD template/gremlin-server-launcher.tmp /apache-tinkerpop-gremlin-server-3.4.0/bin/gremlin-server-launcher.sh
+RUN /bin/bash -c "chmod +x /apache-tinkerpop-gremlin-server-3.4.0/bin/gremlin-server-launcher.sh"
 
 VOLUME ["/data"]
 
 EXPOSE 6006 8888 8182
 
-CMD /bin/bash -c "/apache-tinkerpop-gremlin-server-3.3.4/bin/gremlin-server-launcher.sh && /tensorflow/bin/tensorboard.sh && source tensorflow/bin/activate && tensorflow/bin/jupyter notebook --allow-root --config /notebooks/conf/jupyter_notebook_config.py"
+CMD /bin/bash -c "/apache-tinkerpop-gremlin-server-3.4.0/bin/gremlin-server-launcher.sh && /tensorflow/bin/tensorboard.sh && source tensorflow/bin/activate && tensorflow/bin/jupyter notebook --allow-root --config /notebooks/conf/jupyter_notebook_config.py"
